@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="../fonts/stylesheet.css">
 <link rel="stylesheet" href="../css/main.css">
-<link rel="stylesheet" href="../css/login.css">
+<!--<link rel="stylesheet" href="../css/login.css">-->
 
 <link rel="stylesheet" href="../plugins/file-uploader/css/jquery.fileupload.css">
 <link rel="stylesheet" href="../plugins/file-uploader/css/jquery.fileupload-ui.css">

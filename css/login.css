@@ -21,7 +21,7 @@ body::before {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url(../img/Gedung1.jpg), #36312b;
+  /*background: url(../img/Gedung1.jpg), #36312b;*/
   background-position: center;
   background-size: cover;
 }

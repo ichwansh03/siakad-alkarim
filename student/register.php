@@ -7,13 +7,12 @@ if($user->getsession()){
 	header('Location: profile.php');
 }
 ?>
-<?php 
+<?php
 $pageTitle = "Registrasi Siswa";
 include "top.php";
 ?>
-	<div class="sw_reg fix">
-		<h2>Student Registration Form</h2>
-		<p class="msg">
+	<div class="wrapper">
+		
 				<?php
 					if($_SERVER['REQUEST_METHOD'] == "POST"){
 						$nisn   = $_POST['nisn'];
@@ -46,9 +45,84 @@ include "top.php";
 					}
 				?>
 			
-			</p>
 		<form action="" method="post" id="st_form">
-			<table>
+			<h2>Daftar</h2>
+			<div class="input-field">
+				<input type="text" name="nama" required>
+				<label>Masukkan Nama</label>
+			</div>
+			<div class="input-field">
+				<input type="text" name="nisn" required>
+				<label>Masukkan NISN</label>
+			</div>
+			<div class="input-field">
+				<input type="text" name="nipd" required>
+				<label>Masukkan NIPD</label>
+			</div>
+			<div class="input-field">
+				<input type="email" name="email" required>
+				<label>Masukkan Email</label>
+			</div>
+			<div class="input-field">
+				<input type="password" name="password" required>
+				<label>Masukkan Password</label>
+			</div>
+			<tr>
+					<th>Tanggal Lahir: </th>
+					<td>
+						<fieldset>
+
+						  <select class="select-style" name="BirthMonth">
+						  <option  value="01">Januari</option>
+
+						<option value="02">Februari</option>
+
+						 <option value="03" >Maret</option>
+
+						  <option value="04">April</option>
+
+						  <option value="05">Mei</option>
+
+						  <option value="06">Juni</option>
+
+						  <option value="07">Juli</option>
+
+						 <option value="08">Agustus</option>
+
+						  <option value="09">September</option>
+
+							<option value="10">Oktober</option>
+
+						 <option value="11">November</option>
+						  <option value="12" >Desember</option>
+						  </label>
+
+						</select>
+
+						<label><input class="birthday" maxlength="2" name="BirthDay"  placeholder="Day" required=""></label>
+
+						<label><input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" required=""></label>
+
+					  </fieldset>
+					</td>
+				</tr>
+			<tr>
+					<th>Jenis Kelamin:</th>
+					<td><label><input type="radio" name="jk" value="Male" checked/> LK</label>
+					<label><input type="radio" name="jk" value="Female"/> PR</label>
+						
+					</td>
+				</tr>
+			<div class="input-field">
+				<input type="text" name="kontak" required>
+				<label>Masukkan No.HP</label>
+			</div>
+			<div class="input-field">
+				<input type="text" name="alamat" required>
+				<label>Masukkan Alamat</label>
+			</div>
+			<button type="submit">Daftar</button>
+			<!--<table>
 				<tr>
 					<th>Nama: </th>
 					<td><input type="text" name="nama" placeholder="Nama Lengkap" required /></td>
@@ -127,7 +201,7 @@ include "top.php";
 				<tr>
 					<td colspan="2"><input type="submit" name="sub" value="submit" /></td>
 				</tr>
-			</table>
+			</table>-->
 		</form>
 
 	</div>
