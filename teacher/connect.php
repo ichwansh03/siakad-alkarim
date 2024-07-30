@@ -72,6 +72,19 @@ class LoginAndRegTeacher {
     public function getTeacherSession(){
         return @$_SESSION['teach_login'];
     }
+
+    public function forgotPwTeacher($nip, $oldpw, $newpw) {
+        global $conn;
+        $query = $conn->query("SELECT nip FROM siswa WHERE nip='$nip' AND password='$oldpw'");
+        $rows = $query->num_rows;
+
+        if ($rows == 1) {
+            $update = $conn->query("UPDATE siswa SET password='$newpw' WHERE nip='$nip' ");
+            return print("<p style='color:green;text-align:center'>Password successfully updated.</p>");
+        } else {
+            return print("<p style='color:green;text-align:center'>Old password is not exists.</p>");
+        }
+    }
 }
 
 ?>

@@ -6,7 +6,7 @@ session_start();
 	$nip = $_SESSION['tc_nip'];
 	$name = $_SESSION['tc_name'];
 	if(!$user->getTeacherSession()){
-		header('Location: login.php');
+		header('Location: index.php');
 		exit();
 	}
 ?>
