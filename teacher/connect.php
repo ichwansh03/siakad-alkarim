@@ -7,7 +7,7 @@ class LoginAndRegTeacher {
 
     public function teacherReg($name, $email, $pass, $jk, $alamat, $nip, $kontak){
         global $conn;
-        $reg = $conn->query("SELECT id FROM guru WHERE email='$email' ");
+        $reg = $conn->query("SELECT nip FROM guru WHERE email='$email' ");
         $rows = $reg->num_rows;
 
         if ($rows == 0){
@@ -30,7 +30,7 @@ class LoginAndRegTeacher {
         if ($rows == 1) {
             session_start();
             $_SESSION['teach_login'] = true;
-            $_SESSION['tc_id'] = $fetch['id'];
+            $_SESSION['tc_nip'] = $fetch['nip'];
             $_SESSION['tc_email'] = $fetch['email'];
             $_SESSION['tc_name'] = $fetch['name'];
             $_SESSION['tc_pass'] = $fetch['password'];
@@ -41,19 +41,25 @@ class LoginAndRegTeacher {
     }
 
     public function teachLogout(){
-        $_SESSION['tc_login'] = false;
-        unset($_SESSION['f_id']);
-        unset($_SESSION['f_email']);
-        unset($_SESSION['f_name']);
-        unset($_SESSION['f_pass']);
+        $_SESSION['teach_login'] = false;
+        unset($_SESSION['tc_nip']);
+        unset($_SESSION['tc_email']);
+        unset($_SESSION['tc_name']);
+        unset($_SESSION['tc_pass']);
         unset($_SESSION['ftc_login']);
     }
 
     public function getTeacher(){
         global $conn;
-        $sql = "SELECT * FROM guru ORDER BY id ASC";
+        $sql = "SELECT * FROM guru ORDER BY nip ASC";
         $result = $conn->query($sql);
         return $result;
+    }
+
+    public function teacherById($nip) {
+        global $conn;
+        $query = $conn->query("SELECT * FROM guru WHERE nip='$nip'");
+        return $query;
     }
 
     public function getTeacherByName($nama){
