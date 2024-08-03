@@ -41,7 +41,7 @@
                 <?php if($user->getsession()){ ?>
                 <li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a></li>
                 <li><a href="change_pw.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Ubah Password</a></li>
-                <li><a href="lihat_single_hasil.php?vr=<?php echo $sid?>&vn=<?php echo $sname?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Nilai Mapel</a></li>
+                <li><a href="st_raport.php?vr=<?php echo $sid?>&vn=<?php echo $sname?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Nilai Mapel</a></li>
                 <li><a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $sid; ?></a></li>
                 <?php } ?>
             </ul>
