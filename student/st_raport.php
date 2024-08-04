@@ -23,7 +23,7 @@ include "top.php";
 <?php
 		
 		//custom function check credit hour and grade point
-		function credit_hour($x){
+		function creditHour($x){
 			if($x=="IPA") return 3;
 			elseif($x == "IPS") return 1;
 			elseif($x == "Matematika") return 4;
@@ -33,7 +33,7 @@ include "top.php";
 			elseif($x == "PAK") return 3;
 			elseif($x == "Penjaskes") return 3;
 		}
-		function grade_point($gd){
+		function gradePoint($gd){
 			if($gd<60) return 0;
 			elseif($gd>=60 && $gd<70) return 1;
 			elseif($gd>=70 && $gd<80) return 2;
@@ -46,7 +46,7 @@ include "top.php";
 	<p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>ID Siswa: " . $stid; ?></p>
 	</div>		
 	<div class="fix">
-	<p style="float:left;margin:0 0 3px 0;width:100%;text-align:center;"><a href="lihat_single_nilai.php?vr=<?php echo $stid; ?>&vn=<?php echo $name; ?>"><button class="editbtn">Lihat Nilai</button></a></p>
+	<p style="float:left;margin:0 0 3px 0;width:100%;text-align:center;"><a href="st_nilai.php?vr=<?php echo $stid; ?>&vn=<?php echo $name; ?>"><button class="editbtn">Lihat Nilai</button></a></p>
 	</div>
 	<?php
 	//select semester
@@ -60,7 +60,7 @@ include "top.php";
 			
 				//$get_result = $user->show_marks();
 				
-				$get_result = $user->show_marks($stid,$semester);
+				$get_result = $user->showMarks($stid,$semester);
 				if($get_result){
 			?>
 				<p><?php echo "<p style='text-align:center;background:#ddd;color:#01C3AA;padding:5px;width:84%;margin:0 auto'>".$semester." Semester Result"?></p>
@@ -74,7 +74,7 @@ include "top.php";
 				while($rows = $get_result->fetch_assoc()){
 				$i++;
 				//count total credit hour;	
-				$ch = $ch + credit_hour($rows['sub']);
+				$ch = $ch + creditHour($rows['sub']);
 
 		?>
 			<tr>
@@ -91,11 +91,11 @@ include "top.php";
 					elseif($mark>=90 && $mark<=100){echo "A";}
 					
 					//total grade point
-					$gp = $gp + (credit_hour($rows['sub']) * grade_point($rows['marks']));
+					$gp = $gp + (creditHour($rows['sub']) * gradePoint($rows['marks']));
 					
 				?>
 				</td>
-				<td><?php echo credit_hour($rows['sub']); ?></td>
+				<td><?php echo creditHour($rows['sub']); ?></td>
 				<td>
 				<?php
 					$stat = $rows['marks'];
@@ -122,13 +122,13 @@ include "top.php";
 				<td>
 					<?php
 						if($sg>=3.5){
-							echo "<span style='background:purple;padding:3px 6px;color:#fff;'>Excellent";
+							echo "<span style='background:purple;padding:3px 6px;color:#fff;'>Sangat Baik";
 						}elseif($sg>=3.0 && $sg<3.5){
-							echo "<span style='background:green;padding:3px 6px;color:#fff;'>Good";
+							echo "<span style='background:green;padding:3px 6px;color:#fff;'>Baik";
 						}elseif($sg>=2.5 && $sg<3.0){
-							echo "<span style='background:gray;padding:3px 6px;color:#fff;'>Average";
+							echo "<span style='background:gray;padding:3px 6px;color:#fff;'>Cukup";
 						}else{
-							echo "<span style='background:red;padding:3px 6px;color:#fff;'>Probation";
+							echo "<span style='background:red;padding:3px 6px;color:#fff;'>Sangat Cukup";
 						}
 					?>
 				</td>
@@ -144,7 +144,7 @@ include "top.php";
 			}
 		?>
 		
-			<p style="float:right;text-align:left;margin:20px 0;width:58%"><a href="sw_profile.php"><button class="editbtn">Kembali ke profile</button></a></p>
+			<p style="float:right;text-align:left;margin:20px 0;width:58%"><a href="profile.php"><button class="editbtn">Kembali ke profile</button></a></p>
 
 </div>
 <?php include "bottom.php";?>

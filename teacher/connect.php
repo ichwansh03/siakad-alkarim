@@ -85,6 +85,21 @@ class LoginAndRegTeacher {
             return print("<p style='color:green;text-align:center'>Old password is not exists.</p>");
         }
     }
+
+    public function addMarks($sname, $subject, $mark, $task1, $task2, $task3, $task4, $task5, $task6, $mid, $final) {
+        global $conn;
+        $query = "SELECT * FROM rapor WHERE nisn_siswa = '$sname' AND mapel = '$subject'";
+        $result = $conn->query($query);
+        $count = $result->num_rows;
+        if($count==0){
+            $sql = "INSERT INTO rapor (nisn_siswa, mapel, nilai_akhir, tugas1, tugas2, tugas3, tugas4, tugas5, tugas6, uts, uas) 
+            VALUES ('$sname','$subject','$mark','$task1','$task2','$task3','$task4','$task5','$task6','$mid','$final')";
+            $inserts = $conn->query($sql);
+            return $inserts;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

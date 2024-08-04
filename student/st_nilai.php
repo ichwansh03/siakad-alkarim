@@ -57,7 +57,7 @@ include "top.php";
 			
 				//$get_result = $user->show_marks();
 				
-				$get_result = $user->view_cgpa($stid);
+				$get_result = $user->viewNilaiAkhir($stid);
 				//var_dump($get_result);
 				if($get_result && ($get_result->num_rows)>0){
 			?>
@@ -72,37 +72,37 @@ include "top.php";
 				while($rows = $get_result->fetch_assoc()){
 				$i++;
 				//count total credit hour;	
-				$ch = $ch + credit_hour($rows['mapel']);
+				$ch = $ch + creditHour($rows['mapel']);
 
 		?>
 			<tr>
 				<td><?php echo $rows['mapel']; ?></td>
-				<td><?php echo $rows['nilai']; ?></td>
+				<td><?php echo $rows['nilai_akhir']; ?></td>
 				<td>
 				<?php 
 				//set grade for individual subject
-					$mark = $rows['nilai'];
-					if($mark<60){echo "F";}
+					$mark = $rows['nilai_akhir'];
+					if($mark<60){echo "E";}
 					elseif($mark>=60 && $mark<70){echo "D";}
 					elseif($mark>=70 && $mark<80){echo "C";}
 					elseif($mark>=80 && $mark<90){echo "B";}
 					elseif($mark>=90 && $mark<=100){echo "A";}
 					
 					//total grade point
-					$gp = $gp + (credit_hour($rows['mapel']) * grade_point($rows['nilai']));
+					$gp = $gp + (creditHour($rows['mapel']) * gradePoint($rows['nilai_akhir']));
 					
 				?>
 				</td>
-				<td><?php echo credit_hour($rows['mapel']); ?></td>
+				<td><?php echo creditHour($rows['mapel']); ?></td>
 				<td>
 				<?php
-					$stat = $rows['nilai'];
+					$stat = $rows['nilai_akhir'];
 					if($stat<60){
-						echo "<span style='background:red;padding:3px 11px;color:#fff;'>Fail</span>";
+						echo "<span style='background:red;padding:3px 11px;color:#fff;'>Tidak Lulus</span>";
 					}elseif($stat>=60 && $stat<70){
-						echo "<span style='background:yellow'>Retake</span>";
+						echo "<span style='background:yellow'>Remedial</span>";
 					}else{
-						echo "<span style='background:green;padding:3px 6px;color:#fff;'>Pass</span>";
+						echo "<span style='background:green;padding:3px 6px;color:#fff;'>Lulus</span>";
 					}
 				?>
 				</td>
@@ -111,8 +111,8 @@ include "top.php";
 			</tr>
 			<?php } ?>
 			<tr>
-			<td><?php echo "Total Course: <span style='color:#800080;padding:3px 6px;font-size:22px'>".$i."</span>"; ?></td>
-				<td colspan="1">Total CGPA : </td>
+			<td><?php echo "Total Mata Pelajaran: <span style='color:#800080;padding:3px 6px;font-size:22px'>".$i."</span>"; ?></td>
+				<td colspan="1">Nilai Akhir : </td>
 				<td colspan="2">
 				<?php
 				$sg = $gp/$ch;
@@ -121,13 +121,13 @@ include "top.php";
 				<td>
 					<?php
 						if($sg>=3.5){
-							echo "<span style='background:purple;padding:3px 6px;color:#fff;'>Excellent";
+							echo "<span style='background:purple;padding:3px 6px;color:#fff;'>Sangat Baik";
 						}elseif($sg>=3.0 && $sg<3.5){
-							echo "<span style='background:green;padding:3px 6px;color:#fff;'>Good";
+							echo "<span style='background:green;padding:3px 6px;color:#fff;'>Baik";
 						}elseif($sg>=2.5 && $sg<3.0){
-							echo "<span style='background:gray;padding:3px 6px;color:#fff;'>Average";
+							echo "<span style='background:gray;padding:3px 6px;color:#fff;'>Cukup Baik";
 						}else{
-							echo "<span style='background:red;padding:3px 6px;color:#fff;'>Probation";
+							echo "<span style='background:red;padding:3px 6px;color:#fff;'>Cukup";
 						}
 					?>
 				</td>
@@ -137,11 +137,11 @@ include "top.php";
 		<?php 
 			}
 			else{
-				echo  "<p style='color:red;text-align:center'>Nothing Found</p>";
+				echo  "<p style='color:red;text-align:center'>Tidak Ditemukan</p>";
 				}
 		?>
 		
 		<div class="back fix">
-			<p style="text-align:center"><a href="lihat_single_hasil.php?vr=<?php echo $stid?>&vn=<?php echo $name?>"><button class="editbtn">go to result page</button></a></p>
+			<p style="text-align:center"><a href="st_raport.php?vr=<?php echo $stid?>&vn=<?php echo $name?>"><button class="editbtn">Lihat Nilai</button></a></p>
 		</div>
 </div>
