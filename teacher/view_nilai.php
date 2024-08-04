@@ -1,27 +1,28 @@
 <?php
-session_start();
-
+    session_start();
     require "../main/config.php";
     require_once "connect.php";
+    $user = new LoginAndRegTeacher();
+    $tcnip = $_SESSION['tc_nip'];
+    $tcname = $_SESSION['tc_name'];
 
-    $user = new LoginAndRegStudent();
-    $sid = $_SESSION['sid'];
-    $sname = $_SESSION['sname'];
-    if (!$user->getSession()) {
+    if(!$user->getTeacherSession()){
         header('Location: index.php');
         exit();
     }
-    if (isset($_REQUEST['vr'])){
-        $stid = $_REQUEST['vr'];
+
+    if(isset($_REQUEST['vr'])){
+        $nisn = $_REQUEST['vr'];
         $name = $_REQUEST['vn'];
     }
 ?>
 <?php
-$pageTitle = "Nilai Siswa";
-include "top.php";
+    $pageTitle = "Daftar Nilai Siswa";
+    include "top.php";
 ?>
 <div class="all_student fix">
-    <?php
+
+<?php
     function creditHour($x) {
         if ($x == "IPA") return 3;
         elseif ($x == "IPS") return 1;
@@ -43,7 +44,7 @@ include "top.php";
     ?>
 
     <div class="fix">
-        <p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>ID siswa: ".$stid;?></p>
+        <p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>ID siswa: ".$nisn;?></p>
     </div>
     <div class="fix">
     <p style='text-align:center;background:#ddd;color:#01C3AA;padding:5px;width:84%;margin:0 auto'>Lihat Nilai</p>
@@ -57,7 +58,7 @@ include "top.php";
 			
 				//$get_result = $user->show_marks();
 				
-				$get_result = $user->viewNilaiAkhir($stid);
+				$get_result = $user->viewNilaiAkhir($nisn);
 				//var_dump($get_result);
 				if($get_result && ($get_result->num_rows)>0){
 			?>
@@ -142,6 +143,6 @@ include "top.php";
 		?>
 		
 		<div class="back fix">
-			<p style="text-align:center"><a href="st_raport.php?vr=<?php echo $stid?>&vn=<?php echo $name?>"><button class="editbtn">Lihat Nilai</button></a></p>
+			<p style="text-align:center"><a href="rapor_siswa.php?vr=<?php echo $nisn?>&vn=<?php echo $name?>"><button class="editbtn">Lihat Nilai</button></a></p>
 		</div>
 </div>

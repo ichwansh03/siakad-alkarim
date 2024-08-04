@@ -100,6 +100,31 @@ class LoginAndRegTeacher {
             return false;
         }
     }
+
+    public function getAllStudent(){
+        global $conn;
+        $sql = "SELECT * FROM siswa ORDER BY nisn ASC";
+        $query = $conn->query($sql);
+        return $query;
+    }
+
+    public function viewNilaiAkhir($sname) {
+        global $conn;
+        $sql = "SELECT * FROM rapor WHERE nisn_siswa='$sname'";
+        $result  = $conn->query($sql);
+        return $result;
+    }
+
+    public function showMarks($sname) {
+        global $conn;
+        $result = $conn->query("SELECT * FROM rapor WHERE nisn_siswa='$sname'");
+        $count = $result->num_rows;
+        if($count > 0){
+            return $result;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>
