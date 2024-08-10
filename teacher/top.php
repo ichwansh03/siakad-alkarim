@@ -38,10 +38,10 @@
         <div class="menu ">
             <div class="dateshow fix"><p><?php echo "Date : ".date("d M Y"); ?></p></div>
             <ul>
-                <?php if($user->getsession()){ ?>
+                <?php if($user->getTeacherSession()){ ?>
                 <li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a></li>
                 <li><a href="change_pw.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Ubah Password</a></li>
-                <li><a href="st_raport.php?vr=<?php echo $sid?>&vn=<?php echo $sname?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Nilai Mapel</a></li>
+                <li><a href="view_rapor.php?vr=<?php echo $sid?>&vn=<?php echo $sname?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Nilai Mapel</a></li>
                 <li><a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $sid; ?></a></li>
                 <?php } ?>
             </ul>

@@ -43,7 +43,7 @@ include "top.php";
     ?>
 
     <div class="fix">
-        <p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>ID siswa: ".$stid;?></p>
+        <p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>NISN: ".$stid;?></p>
     </div>
     <div class="fix">
     <p style='text-align:center;background:#ddd;color:#01C3AA;padding:5px;width:84%;margin:0 auto'>Lihat Nilai</p>

@@ -43,7 +43,7 @@ include "top.php";
 		?>
 	<!--Infomation of student-->
 		<div>
-	<p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>ID Siswa: " . $stid; ?></p>
+	<p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>NISN: " . $stid; ?></p>
 	</div>		
 	<div class="fix">
 	<p style="float:left;margin:0 0 3px 0;width:100%;text-align:center;"><a href="st_nilai.php?vr=<?php echo $stid; ?>&vn=<?php echo $name; ?>"><button class="editbtn">Lihat Nilai</button></a></p>
