@@ -3,13 +3,13 @@ session_start();
 	require "php/config.php";
 	require_once "php/functions.php";
 	$user = new login_registration_class();
-	$admin_id = $_SESSION['admin_id'];
-	$admin_name = $_SESSION['admin_name'];
-
-	if(!$user->get_admin_session()){
-		header('Location: index.php');
+	$fid = $_SESSION['f_id'];
+	$fname = $_SESSION['f_name'];
+	if(!$user->get_teach_session()){
+		header('Location: guru_login.php');
 		exit();
 	}
+
 	if(isset($_REQUEST['vr'])){
 		$stid = $_REQUEST['vr'];
 		$name = $_REQUEST['vn'];
@@ -87,11 +87,11 @@ include "php/headertop_admin.php";
 		?>
 			<tr>
 				<td><?php echo $rows['mapel'];?></td>
-				<td><?php echo $rows['nilai'];?></td>
+				<td><?php echo $rows['nilai_akhir'];?></td>
 				<td>
 				<?php 
 				//set grade for individual subject
-					$mark = $rows['nilai'];
+					$mark = $rows['nilai_akhir'];
 					if($mark<60){echo "F";}
 					elseif($mark>=60 && $mark<70){echo "D";}
 					elseif($mark>=70 && $mark<80){echo "C";}
@@ -99,14 +99,14 @@ include "php/headertop_admin.php";
 					elseif($mark>=90 && $mark<=100){echo "A";}
 					
 					//total grade point
-					$gp = $gp + (credit_hour($rows['mapel']) * grade_point($rows['nilai']));
+					$gp = $gp + (credit_hour($rows['mapel']) * grade_point($rows['nilai_akhir']));
 					
 				?>
 				</td>
 				<td><?php echo credit_hour($rows['mapel']); ?></td>
 				<td>
 				<?php
-					$stat = $rows['nilai'];
+					$stat = $rows['nilai_akhir'];
 					if($stat<60){
 						echo "<span style='background:red;padding:3px 11px;color:#fff;'>Gagal</span>";
 					}elseif($stat>=60 && $stat<70){

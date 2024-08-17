@@ -48,7 +48,7 @@
 						<ul>
 						<li><span class="spcl"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Siswa</span></li>
 								<ul>
-									<li><a href="sw_login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+									<li><a href="index.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
 								</ul>
 
 							<li><span class="spcl"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Guru</span></li>
@@ -63,7 +63,7 @@
 
 								<li><span class="spcl"><i class="fa fa-server" aria-hidden="true"></i> Admin</span></li>
 								<ul>
-									<li><a href="index.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+									<li><a href="login_admin.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
 								</ul>
 						
 						</ul>

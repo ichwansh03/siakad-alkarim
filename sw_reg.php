@@ -37,9 +37,9 @@ include "header.php";
 							$st_pass = md5($st_pass);
 							$st_register = $user->st_registration($id_siswa,$st_name,$st_pass,$st_email,$bday,$st_contact,$st_gender,$st_add,$st_nidn,$kelas);
 							if($st_register){
-								echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Registrasi berhasil<a style='font-size:20px;color:#8e44ad' href='sw_login.php'>Login</a></h3>";
+								echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Registrasi berhasil<a style='font-size:20px;color:#8e44ad' href='index.php'>Login</a></h3>";
 							}else{
-								echo "<p style='color:red;text-align:center'>Error..ID Siswa atau email sudah terdaftar</p>";
+								echo "<p style='color:red;text-align:center'>Error..NISN sudah terdaftar</p>";
 							}
 						}
 					}

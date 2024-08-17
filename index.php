@@ -4,44 +4,47 @@ session_start();
 require "php/config.php";
 require_once "php/functions.php";
 $user = new login_registration_class();
-if($user->get_admin_session()){
-	header('Location: admin.php');
+if($user->getsession()){
+	header('Location: sw_profile.php');
 	exit();
 }
 ?>
-
-<?php
-	$pageTitle = "Login Orang Tua";
+<?php 
+$pageTitle = "Login Siswa";
+include "header.php";
 ?>
-<?php include "header.php"; ?>
-
 	<div class="loginform fix">
-		<div class="msg "><h3><i class="fa fa-user" aria-hidden="true"></i>Login Admin</h3></div>
+		<div class="msg"><h3><i class="fa fa-graduation-cap" aria-hidden="true"></i>Login Siswa</h3></div>
 		<div class="access">
-			<?php
+		
+		<?php
 					if($_SERVER['REQUEST_METHOD'] == "POST"){
-						$username = $_POST['username'];
-						$password = $_POST['password'];
+						$st_id	  = $_POST['nisn'];
+						$st_pass = $_POST['password'];
 
-						if(empty($username) or empty($password)){
-							echo "<p style='color:red;text-align:center;'>Kolom tidak boleh kosong</p>";
+						if(empty($st_id) or empty($st_pass)){
+							echo "<p style='color:red;text-align:center;'>Kolom tidak boleh kosong.</p>";
 						}else{
-							$password = md5($password);
-							$login = $user->admin_userlogin($username, $password);
+							$st_pass = md5($st_pass);
+							$login = $user->st_userlogin($st_id, $st_pass);
 							if($login){
-								header('Location: admin.php');
+								header('Location: sw_profile.php');
 							}else{
-								echo "<p style='color:red;text-align:center'>Username atau password salah</p>";
+								echo "<p style='color:red;text-align:center'>ID siswa atau password salah</p>";
 							}
 						}
 					}
 				?>
+				
 			<form action="" method="post">
-				<input type="text" name="username" placeholder="Username" />
+				<input type="text" name="nisn" placeholder="NISN" />
 				<input type="password" name="password" placeholder="Password" />
-				<input type="submit" value="Login" />
+				<p style="text-align: end;"><a href="sw_ubah_pw.php">Lupa Password</a></p>
+				<input style="margin-top:5%" type="submit" value="Login" />
 			</form>
 		</div>
+		<p>Belum terdaftar? <a href="sw_reg.php">Buat akun</a></p>
 	</div>
-					
+
 <?php include "footer.php"; ?>
+<?php ob_end_flush() ; ?>
