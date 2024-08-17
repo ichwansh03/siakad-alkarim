@@ -16,11 +16,11 @@ include "header.php";
 		<p class="msg">
 				<?php
 					if($_SERVER['REQUEST_METHOD'] == "POST"){
-						$id_siswa   = $_POST['id_siswa'];
+						$id_siswa   = $_POST['nisn'];
 						$st_name = $_POST['nama'];
 						$st_pass = $_POST['password'];
 						$st_email = $_POST['email'];
-						
+						$st_kelas = $_POST['kelas'];
 						$BirthMonth = $_POST['BirthMonth'];
 						$BirthDay	 = $_POST['BirthDay'];
 						$BirthYear	 = $_POST['BirthYear'];
@@ -29,12 +29,13 @@ include "header.php";
 						$st_contact  = $_POST['kontak'];
 						$st_gender  = $_POST['jk'];
 						$st_add  = $_POST['alamat'];
+						$st_nidn = $_POST['nidn'];
 						
-						if(empty($id_siswa) or empty($st_name) or empty($st_pass ) or empty($st_email) or empty($BirthMonth) or empty($BirthDay) or empty($BirthYear) or empty($st_contact) or empty($st_gender) or empty($st_add)){
+						if(empty($id_siswa) or empty($st_name) or empty($st_pass ) or empty($st_email) or empty($BirthMonth) or empty($BirthDay) or empty($BirthYear) or empty($st_contact) or empty($st_gender) or empty($st_add) or empty($st_nidn) or empty($kelas)){
 							echo "<p style='color:red;text-align:center'>**Kolom tidak boleh kosong**</p>";
 						}else{
 							$st_pass = md5($st_pass);
-							$st_register = $user->st_registration($id_siswa,$st_name,$st_pass,$st_email,$bday,$st_contact,$st_gender,$st_add);
+							$st_register = $user->st_registration($id_siswa,$st_name,$st_pass,$st_email,$bday,$st_contact,$st_gender,$st_add,$st_nidn,$kelas);
 							if($st_register){
 								echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Registrasi berhasil<a style='font-size:20px;color:#8e44ad' href='sw_login.php'>Login</a></h3>";
 							}else{
@@ -54,7 +55,7 @@ include "header.php";
 				<tr>
 				<tr>
 					<th>Student ID: </th>
-					<td><input type="text" name="id_siswa" placeholder="ID Siswa" required /></td>
+					<td><input type="text" name="nisn" placeholder="NISN" required /></td>
 				</tr>
 				<tr>
 					<th>Password: </th>
@@ -63,6 +64,10 @@ include "header.php";
 				<tr>
 					<th>E-mail: </th>
 					<td><input type="email" name="email" placeholder="example@email.com" required /></td>
+				</tr>
+				<tr>
+					<th>Kelas: </th>
+					<td><input type="text" name="kelas" placeholder="Kode kelas" required /></td>
 				</tr>
 				<tr>
 					<th>Tanggal Lahir: </th>
@@ -109,8 +114,8 @@ include "header.php";
 				</tr>
 				<tr>
 					<th>Jenis Kelamin:</th>
-					<td><label><input type="radio" name="jk" value="Male" checked/> LK</label>
-					<label><input type="radio" name="jk" value="Female"/> PR</label>
+					<td><label><input type="radio" name="jk" value="Laki" checked/> Laki</label>
+					<label><input type="radio" name="jk" value="Perempuan"/> Perempuan</label>
 						
 					</td>
 				</tr>
@@ -119,7 +124,11 @@ include "header.php";
 					<td><input type="text" name="alamat" placeholder="Address" required /></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" name="sub" value="Register" /></td>
+					<th>NIDN:</th>
+					<td><input type="text" name="nidn" placeholder="NIDN" required /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" name="sub" value="Daftar" /></td>
 				</tr>
 			</table>
 		</form>

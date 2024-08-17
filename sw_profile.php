@@ -31,7 +31,7 @@ include "php/headertop.php";
 			</tr>
 			<tr >
 				<td><b>NISN:</b> </td>
-				<td><?php echo $row['id_siswa']; ?></td>
+				<td><?php echo $row['nisn']; ?></td>
 			</tr>
 			<tr>
 				<td><b>Nama:</b> </td>

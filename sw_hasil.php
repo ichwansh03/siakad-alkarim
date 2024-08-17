@@ -3,16 +3,16 @@ session_start();
 	require "php/config.php";
 	require_once "php/functions.php";
 	$user = new login_registration_class();
-	$admin_id = $_SESSION['admin_id'];
-	$admin_name = $_SESSION['admin_name'];
-	if(!$user->get_admin_session()){
-		header('Location: index.php');
+	$fid = $_SESSION['f_id'];
+	$fname = $_SESSION['f_name'];
+	if(!$user->get_teach_session()){
+		header('Location: guru_login.php');
 		exit();
 	}
 ?>	
 <?php 
 $pageTitle = "Hasil Siswa";
-include "php/headertop_admin.php";
+include "php/headertop_guru.php";
 ?>
 <div class="all_student fix">
 		
@@ -21,8 +21,8 @@ include "php/headertop_admin.php";
 				<th style="text-align:center;">No</th>
 				<th style="text-align:center;">Nama</th>
 				<th style="text-align:center;">NISN</th>
-				<th style="text-align:center;">Tambah Hasil</th>
-				<th style="text-align:center;">Lihat Hasil</th>
+				<th style="text-align:center;">Input Nilai</th>
+				<th style="text-align:center;">Lihat Rapor</th>
 				
 			</tr>
 			<?php 
@@ -35,9 +35,9 @@ include "php/headertop_admin.php";
 			<tr>
 				<td><?php echo $i;?></td>
 				<td><?php echo $rows['nama'];?></td>
-				<td><?php echo $rows['id_siswa'];?></td>
-				<td><a href="tambah_hasil.php?ar=<?php echo $rows['id_siswa']; ?>&vn=<?php echo $rows['nama'];?>">Tambah Hasil</a></td>
-				<td><a href="lihat_hasil.php?vr=<?php echo $rows['id_siswa']; ?>&vn=<?php echo $rows['nama'];?>">Lihat Hasil</a></td>
+				<td><?php echo $rows['nisn'];?></td>
+				<td><a href="tambah_hasil.php?ar=<?php echo $rows['nisn']; ?>&vn=<?php echo $rows['nama'];?>">Input Nilai</a></td>
+				<td><a href="lihat_hasil.php?vr=<?php echo $rows['nisn']; ?>&vn=<?php echo $rows['nama'];?>">Lihat Rapor</a></td>
 			</tr>
 			<?php } ?>
 	

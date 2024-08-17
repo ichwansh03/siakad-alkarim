@@ -3,17 +3,19 @@ session_start();
 	require "php/config.php";
 	require_once "php/functions.php";
 	$user = new login_registration_class();
-	$admin_id = $_SESSION['admin_id'];
-	$admin_name = $_SESSION['admin_name'];
-	if(!$user->get_admin_session()){
-		header('Location: index.php');
+	
+	$fid = $_SESSION['f_id'];
+	$fname = $_SESSION['f_name'];
+
+	if(!$user->get_teach_session()){
+		header('Location: guru_login.php');
 		exit();
 	}
 	if(isset($_REQUEST['ar'])){
 		$stid = $_REQUEST['ar'];
 		$name = $_REQUEST['vn'];
 	}
-?>	
+?>
 <?php 
 $pageTitle = "Hasil Siswa";
 include "php/headertop_admin.php";
@@ -23,8 +25,16 @@ include "php/headertop_admin.php";
 		<?php
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$subject = $_POST['mapel'];
-				$marks = $_POST['nilai'];
-				$res = $user->add_marks($stid,$subject,$marks);
+				$marks = $_POST['nilai_akhir'];
+				$task1 = $_POST['tugas1'];
+				$task2 = $_POST['tugas2'];
+				$task3 = $_POST['tugas3'];
+				$task4 = $_POST['tugas4'];
+				$task5 = $_POST['tugas5'];
+				$task6 = $_POST['tugas6'];
+				$mid = $_POST['uts'];
+				$final = $_POST['uas'];
+				$res = $user->add_marks($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks);
 				if($res){
 					echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Nilai berhasil ditambahkan!</h3>";
 				}else{
@@ -59,11 +69,43 @@ include "php/headertop_admin.php";
 						</td>
 					</tr>
 					<tr>
-						<td>Input nilai: </td>
-						<td><input type="text" name="nilai" placeholder="masukkan nilai" required /></td>
+						<td>Tugas 1: </td>
+						<td><input type="text" name="tugas1" placeholder="masukkan nilai" required /></td>
 					</tr>
 					<tr>
-						<td><input type="submit" name="subject" value="Add marks" /></td>
+						<td>Tugas 2: </td>
+						<td><input type="text" name="tugas2" placeholder="masukkan nilai" required /></td>
+					</tr>
+					<tr>
+						<td>Tugas 3: </td>
+						<td><input type="text" name="tugas3" placeholder="masukkan nilai" required /></td>
+					</tr>
+					<tr>
+						<td>UTS: </td>
+						<td><input type="text" name="uts" placeholder="masukkan nilai" required /></td>
+					</tr>
+					<tr>
+						<td>Tugas 4: </td>
+						<td><input type="text" name="tugas4" placeholder="masukkan nilai" required /></td>
+					</tr>
+					<tr>
+						<td>Tugas 5: </td>
+						<td><input type="text" name="tugas5" placeholder="masukkan nilai" required /></td>
+					</tr>
+					<tr>
+						<td>Tugas 6: </td>
+						<td><input type="text" name="tugas6" placeholder="masukkan nilai" required /></td>
+					</tr>
+					<tr>
+						<td>UAS: </td>
+						<td><input type="text" name="uas" placeholder="masukkan nilai" required /></td>
+					</tr>
+					<tr>
+						<td>Nilai Akhir: </td>
+						<td><p style="font-weight: bold;">80.6</p></td>
+					</tr>
+					<tr>
+						<td><input type="submit" name="subject" value="Simpan" /></td>
 						<td><input type="reset" /></td>
 					</tr>
 				</table>

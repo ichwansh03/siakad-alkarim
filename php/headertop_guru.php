@@ -25,7 +25,7 @@
         <header class="container header_area" >
 			<div id="sticker">
 				<div class="head">
-					<a href="#               "><div class="logo fix">
+					<a href="#"><div class="logo fix">
 						<img src="img/alkarim.png" alt="" />
 					</div></a>
 					<div class="uniname fix">
@@ -35,11 +35,10 @@
 				<div class="menu ">
 					<div class="dateshow fix"><p><?php echo "Date : ".date("d M Y"); ?></p></div>
 					<ul>
-						<?php if($user->getsession()){ ?>
-						<li><a href="sw_logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-						<li><a href="sw_ubah_pw.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Ubah Password</a></li>
+						<?php if($user->get_teach_session()){ ?>
+						<li><a href="guru_logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+						<li><a href="guru_ubah_pw.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Ubah Password</a></li>
 						<li><a href="sw_hasil.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Hasil</a></li>
-						<li><a href="sw_profile.php"><i class="fa fa-user" aria-hidden="true"></i>
 						<?php echo $sid; ?>
 						</a></li>
 						

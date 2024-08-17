@@ -11,7 +11,7 @@ if($user->get_admin_session()){
 ?>
 
 <?php
-	$pageTitle = "Login Admin";
+	$pageTitle = "Login Orang Tua";
 ?>
 <?php include "header.php"; ?>
 

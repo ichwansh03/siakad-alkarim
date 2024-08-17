@@ -19,7 +19,7 @@ include "header.php";
 		
 		<?php
 					if($_SERVER['REQUEST_METHOD'] == "POST"){
-						$st_id	  = $_POST['id_siswa'];
+						$st_id	  = $_POST['nisn'];
 						$st_pass = $_POST['password'];
 
 						if(empty($st_id) or empty($st_pass)){
@@ -37,9 +37,10 @@ include "header.php";
 				?>
 				
 			<form action="" method="post">
-				<input type="text" name="id_siswa" placeholder="ID Siswa" />
-				<input type="password" name="password" placeholder="password" />
-				<input type="submit" value="Login" />
+				<input type="text" name="nisn" placeholder="NISN" />
+				<input type="password" name="password" placeholder="Password" />
+				<p style="text-align: end;"><a href="sw_ubah_pw.php">Lupa Password</a></p>
+				<input style="margin-top:5%" type="submit" value="Login" />
 			</form>
 		</div>
 		<p>Belum terdaftar? <a href="sw_reg.php">Buat akun</a></p>

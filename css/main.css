@@ -11,7 +11,7 @@
    ========================================================================== */
 
 html {
-    color: #e3e0e0;
+    color: #141313;
     font-size: 1em;
     line-height: 1.4;
 }
@@ -102,7 +102,6 @@ textarea {
 }
 body{
 	font-family:roboto !important;
-	background:url(../img/ptrn.png) repeat fixed;
 }
 
 .container {
@@ -125,12 +124,14 @@ body{
 
 .logo {
 	width:100px;
-	margin-left:20px;
+	margin-left:10px;
+  margin-top: 10px;
+  margin-right: 10px;
 	float:left;
 }
 .logo img{
-	width:75px;
-	height:80px;
+	width:100px;
+	height:50px;
 }
 .uniname {
 	width:280px;
@@ -138,10 +139,10 @@ body{
   padding-top: 10px;
 }
 .uniname h2{
-	font-size:22px;
-	font-weight:normal;
+	font-size:20px;
+	font-weight:bold;
 	color:#E3E3E5;
-	margin-top: 20;
+	margin-top: 10;
   padding: 0;
   margin: 0;
 }
@@ -226,9 +227,8 @@ body{
 	min-height:580px;
 }
 .content {
-  float: right;
   padding: 10px 170px;
-  width: 780px;
+  width: 750px;
 }
 
 .cpright{

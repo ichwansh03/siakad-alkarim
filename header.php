@@ -46,26 +46,25 @@
 			<div id="stickerside">
 				<div class="sidebar fix" >
 						<ul>
-							<li><span class="spcl"><i class="fa fa-server" aria-hidden="true"></i> Administrator</span></li>
+						<li><span class="spcl"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Siswa</span></li>
+								<ul>
+									<li><a href="sw_login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+								</ul>
+
+							<li><span class="spcl"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Guru</span></li>
+								<ul>
+									<li><a href="guru_login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+								</ul>
+
+								<li><span class="spcl"><i class="fa fa-server" aria-hidden="true"></i> Orang Tua</span></li>
+								<ul>
+									<li><a href="ortu_login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+								</ul>
+
+								<li><span class="spcl"><i class="fa fa-server" aria-hidden="true"></i> Admin</span></li>
 								<ul>
 									<li><a href="index.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
 								</ul>
-							
-							<li><span class="spcl"><i class="fa fa-male" aria-hidden="true"></i> Guru</span></li>
-								<ul>
-									<li><a href="loginguru.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
-									<li><a href="guru_profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profil</a></li>
-									<li><a href="kelas_pres.php"><i class="fa fa-database" aria-hidden="true"></i> Kehadiran Kelas</a></li>
-								</ul>
-							
-							<li><span class="spcl"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Siswa</span></li>
-								<ul>
-									<li><a href="sw_login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
-									<li><a href="sw_reg.php"><i class="fa fa-user-plus" aria-hidden="true"></i> Daftar</a></li>
-									<li><a href="sw_profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profil</a></li>
-									<li><a href="#"><i class="fa fa-outdent" aria-hidden="true"></i> Hasil</a></li>
-								</ul>
-							
 						
 						</ul>
 					

@@ -84,10 +84,10 @@ include "php/headertop.php";
 						$sw_kontak  = $_POST['kontak'];
 						$sw_jk  = $_POST['jk'];
 						$sw_alamat  = $_POST['alamat'];
-						if(empty($sw_nama) or empty($sw_email)or empty($sw_tgllahir) or empty($sw_kontak) or empty($sw_jk) or empty($sw_alamat)){
+						if(empty($sw_nama) or empty($sw_email)or empty($sw_tgllahir) or empty($sw_kontak) or empty($sw_jk) or empty($sw_alamat) or empty($sw_nipd)){
 							echo "<p style='color:red;text-align:center'>Kolom tidak boleh kosong.</p>";
 						}else{
-							$update = $user->updateprofile($sid,$sw_nama,$sw_email,$sw_tgllahir,$sw_jk,$sw_kontak,$sw_alamat,$fileName);
+							$update = $user->updateprofile($sid,$sw_nama,$sw_email,$sw_tgllahir,$sw_jk,$sw_kontak,$sw_alamat,$sw_nipd, $fileName);
 							if($update){
 								echo "<h4 style='color:green;text-align:center'>Informasi berhasil diperbarui</h4>";
 							}else{
@@ -141,6 +141,11 @@ include "php/headertop.php";
 							<td style="width:125px;"></td>
 							<td>Alamat:</td>
 							<td><input type="text" name="alamat" value="<?php echo $row['alamat']; ?>"></td>
+						</tr>
+						<tr>
+							<td style="width:125px;"></td>
+							<td>Alamat:</td>
+							<td><input type="text" name="nipd" value="<?php echo $row['nipd']; ?>"></td>
 						</tr>
 						<tr>
 						<td style="width:125px;"></td>

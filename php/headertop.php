@@ -45,7 +45,7 @@
 						<li><a href="sw_profile.php"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $sid; ?></a></li>
 						<?php } ?>
 						<?php if($user->get_teach_session()){ ?>
-								<li><a href="logoutguru.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+								<li><a href="guru_logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 								<li><a href="kelas_pres_guru.php"><i class="fa fa-cog" aria-hidden="true"></i> Options</a></li>
 								<li><a href="guru_profile.php"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $fname;
 								?></a></li>

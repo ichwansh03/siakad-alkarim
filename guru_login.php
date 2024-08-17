@@ -5,7 +5,7 @@ require "php/config.php";
 require_once "php/functions.php";
 $user = new login_registration_class();
 if($user->get_teach_session()){
-	header('Location: kelas_pres_guru.php');
+	header('Location: guru_profile.php');
 	exit();
 }
 ?>
@@ -21,30 +21,31 @@ include "header.php";
 			<?php
 			//php for teach login
 			if($_SERVER['REQUEST_METHOD'] == "POST"){
-						$username = $_POST['username'];
+						$nip = $_POST['nip'];
 						$psw  = $_POST['password'];
 
-						if(empty($username) or empty($psw)){
+						if(empty($nip) or empty($psw)){
 							echo "<p style='color:red;text-align:center;'>Kolom tidak boleh kosong.</p>";
 						}else{
 							$psw = md5($psw);
-							$login = $user->teach_login($username, $psw);
+							$login = $user->teach_login($nip, $psw);
 							if($login){
-								header('Location: kelas_pres_guru.php');
+								header('Location: guru_profile.php');
 							}else{
-								echo "<p style='color:red;text-align:center'>Username atau password salah</p>";
+								echo "<p style='color:red;text-align:center'>nip atau password salah</p>";
 							}
 						}
 					}
 				?>
 				
 			<form action="" method="post">
-				<input type="text" name="username" placeholder="Username" />
+				<input type="text" name="nip" placeholder="NIP" />
 				<input type="password" name="password" placeholder="Password" />
-				<input style="color:#ddd;background:#3498db" type="submit" value="Login" />
+				<p style="text-align: end;"><a href="guru_ubah_pw.php">Lupa Password</a></p>
+				<input style="color:#ddd;background:#3498db;margin-top:5%" type="submit" value="Login" />
 			</form>
 		</div>
-		<p >Not Registered? <a href="guru_reg.php">Buat Akun</a></p>
+		<p >Belum Terdaftar? <a href="guru_reg.php">Buat Akun</a></p>
 	</div>
 
 <?php

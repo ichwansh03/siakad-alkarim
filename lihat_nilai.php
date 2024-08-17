@@ -138,7 +138,7 @@ include "php/headertop_admin.php";
 		?>
 		
 		<div class="back fix">
-			<p style="text-align:center"><a href="view_result.php?vr=<?php echo $stid?>&vn=<?php echo $name?>"><button class="editbtn">go to result page</button></a></p>
+			<p style="text-align:center"><a href="lihat_hasil.php?vr=<?php echo $stid?>&vn=<?php echo $name?>"><button class="editbtn">go to result page</button></a></p>
 		</div>
 
 </div>
