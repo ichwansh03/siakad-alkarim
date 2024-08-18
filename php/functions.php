@@ -276,6 +276,18 @@ class login_registration_class{
 		}
 		
 	}
+	//show marks by nisn and subject
+	public function show_marks_by_mapel($stid, $subject) {
+		global $conn;
+		$result = $conn->query("select * from rapor where nisn='$stid' and mapel='$subject'");
+		$count = $result->num_rows;
+		if($count>0){
+			return $result;
+		}else{
+			return false;
+		}
+	}
+
 	//update student result
 	public function update_result($stid,$subject = array()){
 		global $conn;
@@ -290,7 +302,7 @@ class login_registration_class{
 		}
 	}
 
-	public function update_rapor($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks){
+	public function update_nilai($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks){
 		global $conn;
 		$query = $conn->query("update rapor set mapel='$subject',tugas1='$task1',tugas2='$task2',tugas3='$task3',uts='$mid', tugas4='$task4', tugas5='$task5', tugas6='$task6', uas='$final', nilai_akhir='$marks' where nisn='$stid'");
 		return true;

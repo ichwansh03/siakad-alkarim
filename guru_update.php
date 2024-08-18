@@ -17,7 +17,7 @@
     include "php/headertop_guru.php";
 ?>
 <div class="profile">
-    <h3 style="font-size:18px;text-align:center;background:#1abc9c;color:#fff;padding:10px;margin:0">Update Profil Kamu</h3>
+    <h3 style="font-size:18px;text-align:center;background:#1abc9c;color:#fff;padding:10px;margin:0">Ubah Profil</h3>
 
     <?php
         
@@ -91,7 +91,7 @@
 						<td></td>
 						<td colspan="2">
 							<input style="background:#3498db;color:#fff;width:168px;border-radius:5px;" type="submit" name="Update" value="Update">
-							</td>
+						</td>
 						</tr>
             </table>
             <?php } ?>
