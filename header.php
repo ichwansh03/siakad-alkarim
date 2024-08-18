@@ -56,7 +56,7 @@
 									<li><a href="guru_login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
 								</ul>
 
-								<li><span class="spcl"><i class="fa fa-server" aria-hidden="true"></i> Orang Tua</span></li>
+								<li><span class="spcl"><i class="fa fa-user" aria-hidden="true"></i> Orang Tua</span></li>
 								<ul>
 									<li><a href="ortu_login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
 								</ul>

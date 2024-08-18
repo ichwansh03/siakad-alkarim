@@ -14,7 +14,7 @@ $pageTitle = "Login Orang Tua";
 include "header.php";
 ?>
 <div class="loginform fix">
-    <div class="msg"><h3><i class="fa fa-graduation-cap" aria-hidden="true"></i>Login Orang Tua</h3></div>
+    <div class="msg"><h3><i class="fa fa-user" aria-hidden="true"></i>Login Orang Tua</h3></div>
     <div class="access">
         <?php
             if($_SERVER['REQUEST_METHOD'] == "POST"){

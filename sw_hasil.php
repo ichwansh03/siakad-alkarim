@@ -1,10 +1,12 @@
 <?php
+ini_set('display_errors','1');
 session_start();
 	require "php/config.php";
 	require_once "php/functions.php";
 	$user = new login_registration_class();
 	$fid = $_SESSION['f_id'];
 	$fname = $_SESSION['f_name'];
+	$fclass = $_SESSION['f_class'];
 	if(!$user->get_teach_session()){
 		header('Location: guru_login.php');
 		exit();
@@ -17,6 +19,7 @@ include "php/headertop_guru.php";
 <div class="all_student fix">
 		
 		<table class="tab_one" style="text-align:center;">
+
 			<tr>
 				<th style="text-align:center;">No</th>
 				<th style="text-align:center;">Nama</th>
@@ -27,7 +30,7 @@ include "php/headertop_guru.php";
 			</tr>
 			<?php 
 			$i=0;
-				$alluser = $user->get_all_student();
+				$alluser = $user->get_student_by_class($fclass);
 				
 				while($rows = $alluser->fetch_assoc()){
 				$i++;

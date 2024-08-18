@@ -6,18 +6,18 @@
 	$sid = $_SESSION['sid'];
 	$sname = $_SESSION['sname'];
 	
-	if(!$user->getsession()){
+	/*if(!$user->getsession()){
 		header('Location: sw_login.php');
 		exit();
-	}
+	}*/
 ?>
 
 <?php 
 $pageTitle = "Ubah Password";
-include "php/headertop.php";
+//include "php/headertop.php";
 ?>
 <div class="profile">
-			<h3 style="font-size:18px;text-align:center;background:#1abc9c;color:#fff;padding:10px;margin:0">Update Profil Kamu</h3>							
+			<h3 style="font-size:18px;text-align:center;background:#1abc9c;color:#fff;padding:10px;margin:0">Ubah Password</h3>							
 				<?php
 					if($_SERVER['REQUEST_METHOD'] == "POST"){
 						$oldpass  = $_POST['oldpass'];

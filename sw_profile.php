@@ -42,6 +42,10 @@ include "php/headertop.php";
 				<td><?php echo $row['email']; ?></td>
 			</tr>
 			<tr>
+				<td><b>Kelas:</b> </td>
+				<td><?php echo $row['kelas']; ?></td>
+			</tr>
+			<tr>
 				<td><b>Tanggal Lahir:</b> </td>
 				<td><?php echo $row['tgl_lahir']; ?></td>
 			</tr>
@@ -57,10 +61,10 @@ include "php/headertop.php";
 				<td><b>Alamat:</b> </td>
 				<td><?php echo $row['alamat']; ?></td>
 			</tr>
-			<?php if($row['id_siswa'] == $sid){ ?>
+			<?php if($row['nisn'] == $sid){ ?>
 			<tr>
 				<td><b>Update Profil:</b> </td>
-				<td><a href="sw_update.php?id=<?php echo $row['id_siswa'];?>"><button class="editbtn">Edit Profil</button></a></td>
+				<td><a href="sw_update.php?id=<?php echo $row['nisn'];?>"><button class="editbtn">Edit Profil</button></a></td>
 			</tr>
 			<?php } } ?>
 		</table>

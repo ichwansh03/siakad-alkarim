@@ -6,6 +6,7 @@ require_once "php/functions.php";
 $user = new login_registration_class();
 $fid = $_SESSION['f_id'];
 $fname = $_SESSION['f_name'];
+$fclass = $_SESSION['f_class'];
 if(!$user->get_teach_session()){
 	header('Location: guru_login.php');
 	exit();
@@ -25,10 +26,17 @@ include "php/headertop_guru.php";
 				while($row = $getuser->fetch_assoc()){
 			?>
 			<tr>
+				<td  style="text-align:center">NIP: </td>
+				<td><?php echo $row['nip']; ?></td>
+			</tr>
+			<tr>
 				<td  style="text-align:center">Nama: </td>
 				<td><?php echo $row['nama']; ?></td>
 			</tr>
-			
+			<tr>
+				<td  style="text-align:center">Kelas Ajar: </td>
+				<td><?php echo $row['kelas_ajar']; ?></td>
+			</tr>
 			<tr>
 				<td  style="text-align:center">E-mail: </td>
 				<td><?php echo $row['email']; ?></td>

@@ -46,11 +46,8 @@ include "php/headertop_admin.php";
 		<div>
 	<p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>ID Siswa: " . $stid; ?></p>
 	</div>	
-	<div>
-	<p style="float:left;margin:0 0 5px 0;width:100%;text-align:center;"><a href="lihat_nilai.php?vr=<?php echo $stid; ?>&vn=<?php echo $name; ?>"><button class="editbtn">Lihat Nilai</button></a></p>
-	</div>
-	
-	<form action="" method="post" style="width:23%;margin:0 auto;padding-bottom:5px;">
+		
+	<form action="" method="post" style="float:center;text-align:center;margin-top:20px;padding-bottom:5px;">
 		<select name="seme" id="">
 			<option value="1st">Semester Ganjil</option>
 			<option value="2nd">Semester Genap</option>
@@ -78,6 +75,9 @@ include "php/headertop_admin.php";
 					<th>Mata Pelajaran</th>
 					<th>Nilai Akhir</th>
 					<th>Nilai Mutu</th>
+					<th>Deskripsi</th>
+					<th>Status</th>
+					<th>Ubah Nilai</th>
 		<?php		
 				while($rows = $get_result->fetch_assoc()){
 				$i++;
@@ -85,6 +85,7 @@ include "php/headertop_admin.php";
 				$ch = $ch + credit_hour($rows['mapel']);
 
 		?>
+			
 			<tr>
 				<td><?php echo $rows['mapel'];?></td>
 				<td><?php echo $rows['nilai_akhir'];?></td>
@@ -103,7 +104,7 @@ include "php/headertop_admin.php";
 					
 				?>
 				</td>
-				<td><?php echo credit_hour($rows['mapel']); ?></td>
+				<td><?php echo $rows['deskripsi'];?></td>
 				<td>
 				<?php
 					$stat = $rows['nilai_akhir'];
@@ -116,8 +117,7 @@ include "php/headertop_admin.php";
 					}
 				?>
 				</td>
-				
-				
+				<td><a href="update_single_nilai.php?ar=<?php echo $stid?>&seme=<?php echo $semester?>&vn=<?php echo $name?>"><button class="editbtn">Edit</button></a></td>
 			</tr>
 			<?php } ?>
 			<tr>
@@ -149,12 +149,12 @@ include "php/headertop_admin.php";
 				echo  "<p style='color:red;text-align:center'>Nothing Found</p>";
 				}
 		?>
-			<p style="float:left; text-align:right;margin:20px 0;width:49%"><a href="st_result_update.php?ar=<?php echo $stid?>&seme=<?php echo $semester?>&vn=<?php echo $name?>"><button class="editbtn">Edit Hasil</button></a></p>
+
 		<?php 
 				}
 		?>
 		
-			<p style="float:right;text-align:left;margin:20px 0;width:49%"><a href="st_result.php"><button class="editbtn">Kembali list</button></a></p>
+			<p style="float:center;text-align:center;margin-top:20px"><a href="sw_hasil.php"><button class="editbtn">Kembali list</button></a></p>
 
 </div>
 <?php include "php/footerbottom.php";?>

@@ -31,9 +31,9 @@ include "header.php";
 							$tc_pass = md5($tc_pass);
 							$fct_register = $user->teach_registration($tc_nip, $tc_name,$tc_pass,$tc_email,$tc_gender,$tc_kontak,$tc_alamat, $tc_kelas);
 							if($fct_register){
-								echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Registrasi Berhasil !! <a style='font-size:20px;color:#8e44ad' href='loginguru.php'>Login</a></h3>";
+								echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Registrasi Berhasil !! <a style='font-size:20px;color:#8e44ad' href='guru_login.php'>Login</a></h3>";
 							}else{
-								echo "<p style='color:red;text-align:center'>Error..username Already exists</p>";
+								echo "<p style='color:red;text-align:center'>Error.. NIP sudah terdaftar</p>";
 							}
 						}
 					}

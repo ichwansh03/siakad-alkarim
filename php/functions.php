@@ -148,6 +148,7 @@ class login_registration_class{
 			$_SESSION['teach_login'] = true;
 			$_SESSION['f_id'] = $fctinfo['nip'];
 			$_SESSION['f_name'] = $fctinfo['nama'];
+			$_SESSION['f_class'] = $fctinfo['kelas_ajar'];
 			$_SESSION['f_pass'] = $fctinfo['password'];
 			return true;
 		}else{
@@ -159,8 +160,10 @@ class login_registration_class{
 		unset($_SESSION['f_id']);
 		unset($_SESSION['f_name']);
 		unset($_SESSION['f_pass']);
+		unset($_SESSION['f_class']);
 		unset($_SESSION['fct_login']);
 	}
+
 	public function get_teach_session(){
 		return @$_SESSION['teach_login'];
 	}
@@ -176,7 +179,14 @@ class login_registration_class{
 	//for getting All student infomation 
 	public function get_all_student(){
 		global $conn;
-		$sql = "select * from siswa order by nisn ASC";
+		$sql = "select * from siswa order by nama ASC";
+		$query = $conn->query($sql);
+		return $query;
+	}
+
+	public function get_student_by_class($kelas){
+		global $conn;
+		$sql = "select * from siswa where kelas='$kelas'";
 		$query = $conn->query($sql);
 		return $query;
 	}

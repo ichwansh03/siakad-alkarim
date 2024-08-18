@@ -33,6 +33,7 @@ include "php/headertop_admin.php";
 				$task6 = $_POST['tugas6'];
 				$mid = $_POST['uts'];
 				$final = $_POST['uas'];
+				$desc = $_POST['deskripsi'];
 				$marks = ($task1 + $task2 + $task3 + $task4 + $task5 + $task6)/20 + ($mid * 0.35) + ($final * 0.35);
 				$res = $user->add_marks($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks);
 				if($res){
@@ -99,6 +100,10 @@ include "php/headertop_admin.php";
 					<tr>
 						<td>UAS: </td>
 						<td><input type="number" name="uas" placeholder="masukkan nilai" required /></td>
+					</tr>
+					<tr>
+						<td>Deskripsi: </td>
+						<td><textarea name="deskripsi" rows="4"></textarea></td>
 					</tr>
 					<tr>
 						<td>Nilai Akhir: </td>

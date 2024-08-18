@@ -43,7 +43,7 @@ include "php/headertop.php";
 		?>
 	<!--Infomation of student-->
 	<div class="fix">
-	<p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>ID Siswa: " . $stid; ?></p>
+	<p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>NISN: " . $stid; ?></p>
 	</div>	
 <div  class="fix">	
 	<p style='text-align:center;background:#ddd;color:#01C3AA;padding:5px;width:84%;margin:0 auto'>Lihat Nilai</p>
@@ -63,11 +63,10 @@ include "php/headertop.php";
 			?>
 				
 				<table class="tab_two" style="text-align:center;width:85%;margin:0 auto">
-					<th>Subject</th>
-					<th>Marks</th>
-					<th>Grade</th>
-					<th>Credit hr.</th>
-					<th>Status</th>
+					<th>Nama KD</th>
+					<th>Nilai</th>
+					<th>Huruf Mutu</th>
+					<th>Deskripsi</th>
 		<?php		
 				while($rows = $get_result->fetch_assoc()){
 				$i++;
@@ -77,11 +76,11 @@ include "php/headertop.php";
 		?>
 			<tr>
 				<td><?php echo $rows['mapel']; ?></td>
-				<td><?php echo $rows['nilai']; ?></td>
+				<td><?php echo $rows['nilai_akhir']; ?></td>
 				<td>
 				<?php 
 				//set grade for individual subject
-					$mark = $rows['nilai'];
+					$mark = $rows['nilai_akhir'];
 					if($mark<60){echo "F";}
 					elseif($mark>=60 && $mark<70){echo "D";}
 					elseif($mark>=70 && $mark<80){echo "C";}
@@ -89,20 +88,20 @@ include "php/headertop.php";
 					elseif($mark>=90 && $mark<=100){echo "A";}
 					
 					//total grade point
-					$gp = $gp + (credit_hour($rows['mapel']) * grade_point($rows['nilai']));
+					$gp = $gp + (credit_hour($rows['mapel']) * grade_point($rows['nilai_akhir']));
 					
 				?>
 				</td>
 				<td><?php echo credit_hour($rows['mapel']); ?></td>
 				<td>
 				<?php
-					$stat = $rows['nilai'];
+					$stat = $rows['nilai_akhir'];
 					if($stat<60){
-						echo "<span style='background:red;padding:3px 11px;color:#fff;'>Fail</span>";
+						echo "<span style='background:red;padding:3px 11px;color:#fff;'>Tidak Lulus</span>";
 					}elseif($stat>=60 && $stat<70){
-						echo "<span style='background:yellow'>Retake</span>";
+						echo "<span style='background:yellow'>Remidial</span>";
 					}else{
-						echo "<span style='background:green;padding:3px 6px;color:#fff;'>Pass</span>";
+						echo "<span style='background:green;padding:3px 6px;color:#fff;'>Lulus</span>";
 					}
 				?>
 				</td>
@@ -111,8 +110,8 @@ include "php/headertop.php";
 			</tr>
 			<?php } ?>
 			<tr>
-			<td><?php echo "Total Course: <span style='color:#800080;padding:3px 6px;font-size:22px'>".$i."</span>"; ?></td>
-				<td colspan="1">Total CGPA : </td>
+			<td><?php echo "Total KD: <span style='color:#800080;padding:3px 6px;font-size:22px'>".$i."</span>"; ?></td>
+				<td colspan="1">Total Nilai : </td>
 				<td colspan="2">
 				<?php
 				$sg = $gp/$ch;
@@ -121,13 +120,13 @@ include "php/headertop.php";
 				<td>
 					<?php
 						if($sg>=3.5){
-							echo "<span style='background:purple;padding:3px 6px;color:#fff;'>Excellent";
+							echo "<span style='background:purple;padding:3px 6px;color:#fff;'>Sangat Baik";
 						}elseif($sg>=3.0 && $sg<3.5){
-							echo "<span style='background:green;padding:3px 6px;color:#fff;'>Good";
+							echo "<span style='background:green;padding:3px 6px;color:#fff;'>Baik";
 						}elseif($sg>=2.5 && $sg<3.0){
-							echo "<span style='background:gray;padding:3px 6px;color:#fff;'>Average";
+							echo "<span style='background:gray;padding:3px 6px;color:#fff;'>Cukup";
 						}else{
-							echo "<span style='background:red;padding:3px 6px;color:#fff;'>Probation";
+							echo "<span style='background:red;padding:3px 6px;color:#fff;'>Sangat Cukup";
 						}
 					?>
 				</td>
