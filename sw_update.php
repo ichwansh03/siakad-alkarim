@@ -37,7 +37,7 @@ include "php/headertop.php";
 </script>
 
 <div class="profile">
-			<h3 style="font-size:18px;text-align:center;background:#1abc9c;color:#fff;padding:10px;margin:0">Update Profil Kamu</h3>							
+			<h3 style="font-size:18px;text-align:center;background:#1abc9c;color:#fff;padding:10px;margin:0">Update Profil Kamu</h3>
 				<?php
 						$qry=$user->getuserbyid($sid);
 						$pic=$qry->fetch_assoc();
@@ -83,11 +83,12 @@ include "php/headertop.php";
 						$sw_tgllahir  = $_POST['tgl_lahir'];
 						$sw_kontak  = $_POST['kontak'];
 						$sw_jk  = $_POST['jk'];
+						$sw_kelas = $_POST['kelas'];
 						$sw_alamat  = $_POST['alamat'];
-						if(empty($sw_nama) or empty($sw_email)or empty($sw_tgllahir) or empty($sw_kontak) or empty($sw_jk) or empty($sw_alamat) or empty($sw_nipd)){
+						if(empty($sw_nama) or empty($sw_email)or empty($sw_tgllahir) or empty($sw_kontak) or empty($sw_jk) or empty($sw_alamat) or empty($sw_nipd) or empty($sw_kelas)){
 							echo "<p style='color:red;text-align:center'>Kolom tidak boleh kosong.</p>";
 						}else{
-							$update = $user->updateprofile($sid,$sw_nama,$sw_email,$sw_tgllahir,$sw_jk,$sw_kontak,$sw_alamat,$sw_nipd, $fileName);
+							$update = $user->updateprofile($sid,$sw_nama,$sw_email,$sw_tgllahir,$sw_jk,$sw_kontak,$sw_alamat,$sw_nipd, $sw_kelas, $fileName);
 							if($update){
 								echo "<h4 style='color:green;text-align:center'>Informasi berhasil diperbarui</h4>";
 							}else{
@@ -124,6 +125,11 @@ include "php/headertop.php";
 						</tr>
 						<tr>
 							<td style="width:125px;"></td>
+							<td>Kelas:</td>
+							<td><input type="text" name="kelas" value="<?php echo $row['kelas']; ?>"></td>
+						</tr>
+						<tr>
+							<td style="width:125px;"></td>
 							<td>Tanggal Lahir:</td>
 							<td><input type="text" name="tgl_lahir" value="<?php echo $row['tgl_lahir']; ?>"></td>
 						</tr>
@@ -144,7 +150,7 @@ include "php/headertop.php";
 						</tr>
 						<tr>
 							<td style="width:125px;"></td>
-							<td>Alamat:</td>
+							<td>NIPD:</td>
 							<td><input type="text" name="nipd" value="<?php echo $row['nipd']; ?>"></td>
 						</tr>
 						<tr>

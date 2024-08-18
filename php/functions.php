@@ -111,12 +111,12 @@ class login_registration_class{
 	All functions for teach section
 	---------------------------------
 	**/
-	public function teach_registration($nip, $name,$pass,$email,$jk_guru,$kontak_guru,$alamat_guru,$kelas){
+	public function teach_registration($nip, $name,$pass,$email,$jk_guru,$kontak_guru,$alamat_guru,$tgllahir,$kelas){
 		global $conn;
 		$fct = $conn->query("select nip from guru where nip='$nip' ");
 		$count = $fct->num_rows;
 		if($count == 0){
-			$sql = "insert into guru(nip,nama,password,email,jk,kontak,alamat,kelas_ajar) values('$nip','$name','$pass','$email','$jk_guru','$kontak_guru','$alamat_guru','$kelas')";
+			$sql = "insert into guru(nip,nama,password,email,jk,kontak,alamat,tgl_lahir,kelas_ajar) values('$nip','$name','$pass','$email','$jk_guru','$kontak_guru','$alamat_guru','$tgllahir','$kelas')";
 			$result = $conn->query($sql);
 			return true;
 		}else{
@@ -155,6 +155,14 @@ class login_registration_class{
 			return false;
 		}
 	}
+	//update profile teacher
+	//Update Student Profile
+	public function update_teach_profile($nip, $name,$email,$jk_guru,$kontak_guru,$alamat_guru,$tgllahir,$kelas){
+		global $conn;
+		$query = $conn->query("update guru set nama='$name',email='$email',tgl_lahir='$tgllahir',jk='$jk_guru',kontak='$kontak_guru', alamat='$alamat_guru', kelas_ajar='$kelas' where nip='$nip'");
+		return true;
+	}
+
 	public function teach_logout(){
 		$_SESSION['teach_login'] = false;
 		unset($_SESSION['f_id']);

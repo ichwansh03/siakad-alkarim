@@ -20,16 +20,20 @@ include "header.php";
 						$tc_name = $_POST['nama'];
 						$tc_pass = $_POST['password'];
 						$tc_email = $_POST['email'];
+						$BirthMonth = $_POST['BirthMonth'];
+						$BirthDay	 = $_POST['BirthDay'];
+						$BirthYear	 = $_POST['BirthYear'];
+						$bday = "{$BirthYear}-{$BirthMonth}-{$BirthDay}";
 						$tc_gender  = $_POST['jk'];	
 						$tc_kontak  = $_POST['kontak'];
 						$tc_alamat  = $_POST['alamat'];
 						$tc_kelas = $_POST['kelas_ajar'];
 						
-						if(empty($tc_name) or empty($tc_pass ) or empty($tc_email)or empty($tc_kontak) or empty($tc_gender) or empty($tc_alamat) or empty($tc_nip) or empty($tc_kelas)){
+						if(empty($tc_name) or empty($tc_pass ) or empty($tc_email) or empty($BirthMonth) or empty($BirthDay) or empty($BirthYear) or empty($tc_kontak) or empty($tc_gender) or empty($tc_alamat) or empty($tc_nip) or empty($tc_kelas)){
 							echo "<p style='color:red;text-align:center'>**Kolom tidak boleh kosong**</p>";
 						}else{
 							$tc_pass = md5($tc_pass);
-							$fct_register = $user->teach_registration($tc_nip, $tc_name,$tc_pass,$tc_email,$tc_gender,$tc_kontak,$tc_alamat, $tc_kelas);
+							$fct_register = $user->teach_registration($tc_nip, $tc_name,$tc_pass,$tc_email,$tc_gender,$tc_kontak,$tc_alamat, $bday, $tc_kelas);
 							if($fct_register){
 								echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Registrasi Berhasil !! <a style='font-size:20px;color:#8e44ad' href='guru_login.php'>Login</a></h3>";
 							}else{
@@ -58,6 +62,45 @@ include "header.php";
 				<tr>
 					<th>E-mail: </th>
 					<td><input type="email" name="email" placeholder="example@email.com" required /></td>
+				</tr>
+				<tr>
+					<th>Tanggal Lahir: </th>
+					<td>
+						<fieldset>
+
+						  <select class="select-style" name="BirthMonth">
+						  <option  value="01">Jan</option>
+
+						<option value="02">Feb</option>
+
+						 <option value="03" >Maret</option>
+
+						  <option value="04">April</option>
+
+						  <option value="05">Mei</option>
+
+						  <option value="06">Juni</option>
+
+						  <option value="07">Juli</option>
+
+						 <option value="08">Ags</option>
+
+						  <option value="09">Sep</option>
+
+							<option value="10">Okt</option>
+
+						 <option value="11">Nov</option>
+						  <option value="12" >Des</option>
+						  </label>
+
+						</select>   
+
+						<label><input class="birthday" maxlength="2" name="BirthDay"  placeholder="Day" required=""></label>
+
+						<label><input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" required=""></label>
+
+					  </fieldset>
+					</td>
 				</tr>
 				<tr>
 					<th>Kelas Ajar: </th>

@@ -26,36 +26,43 @@ include "php/headertop_guru.php";
 				while($row = $getuser->fetch_assoc()){
 			?>
 			<tr>
-				<td  style="text-align:center">NIP: </td>
+				<td><b>NIP: </b></td>
 				<td><?php echo $row['nip']; ?></td>
 			</tr>
 			<tr>
-				<td  style="text-align:center">Nama: </td>
+				<td><b>Nama: </b></td>
 				<td><?php echo $row['nama']; ?></td>
 			</tr>
 			<tr>
-				<td  style="text-align:center">Kelas Ajar: </td>
+				<td><b>Kelas Ajar: </b></td>
 				<td><?php echo $row['kelas_ajar']; ?></td>
 			</tr>
 			<tr>
-				<td  style="text-align:center">E-mail: </td>
+				<td><b>Kelas Ajar: </b></td>
 				<td><?php echo $row['email']; ?></td>
 			</tr>
 			
 			<tr>
-				<td  style="text-align:center">Kontak: </td>
+				<td><b>Kontak: </b></td>
 				<td><?php echo $row['kontak']; ?></td>
 			</tr>
 			<tr>
-				<td  style="text-align:center">Jenis Kelamin: </td>
+				<td><b>Tanggal Lahir: </b></td>
+				<td><?php echo $row['tgl_lahir']; ?></td>
+			</tr>
+			<tr>
+				<td><b>Jenis Kelamin: </b></td>
 				<td><?php echo $row['jk']; ?></td>
 			</tr>
 			<tr>
-				<td  style="text-align:center">Alamat: </td>
+				<td><b>Alamat: </b></td>
 				<td><?php echo $row['alamat']; ?></td>
 			</tr>
 			<?php if($row['nip'] == $fid){ ?>
-			
+			<tr>
+				<td><b>Update Profil:</b> </td>
+				<td><a href="guru_update.php?id=<?php echo $row['nip'];?>"><button class="editbtn">Edit Profil</button></a></td>
+			</tr>
 			<?php } } ?>
 		</table>
 
