@@ -49,8 +49,8 @@ include "php/headertop_admin.php";
 		
 	<form action="" method="post" style="float:center;text-align:center;margin-top:20px;padding-bottom:5px;">
 		<select name="seme" id="">
-			<option value="1st">Semester Ganjil</option>
-			<option value="2nd">Semester Genap</option>
+			<option value="ganjil">Semester Ganjil</option>
+			<option value="genap">Semester Genap</option>
 		</select>
 		<input type="submit" value="Lihat Nilai" />
 
@@ -117,7 +117,7 @@ include "php/headertop_admin.php";
 					}
 				?>
 				</td>
-				<td><a href="update_single_nilai.php?ar=<?php echo $stid?>&seme=<?php echo $semester?>&vn=<?php echo $name?>"><button class="editbtn">Edit</button></a></td>
+				<td><a href="update_single_nilai.php?vr=<?php echo $stid?>&mp=<?php echo $rows['mapel'];?>&sm=<?php echo $semester?>&vn=<?php echo $name?>"><button class="editbtn">Edit</button></a></td>
 			</tr>
 			<?php } ?>
 			<tr>

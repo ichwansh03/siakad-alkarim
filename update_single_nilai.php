@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors','1');
     session_start();
     require "php/config.php";
     require_once "php/functions.php";
@@ -12,6 +13,8 @@
 
     if (isset($_REQUEST['vr'])) {
         $stid = $_REQUEST['vr'];
+        $subject = $_REQUEST['mp'];
+        $semester = $_REQUEST['sm'];
         $name = $_REQUEST['vn'];
     }
 ?>
@@ -25,7 +28,6 @@ include "php/headertop_guru.php";
     <?php
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
-            $subject = $_POST['mapel'];
 			$task1 = $_POST['tugas1'];
 			$task2 = $_POST['tugas2'];
 			$task3 = $_POST['tugas3'];
@@ -35,7 +37,10 @@ include "php/headertop_guru.php";
 			$mid = $_POST['uts'];
 			$final = $_POST['uas'];
 			$desc = $_POST['deskripsi'];
-			$marks = ($task1 + $task2 + $task3 + $task4 + $task5 + $task6)/20 + ($mid * 0.35) + ($final * 0.35);				$res = $user->update_nilai($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks);
+            $semester = $_POST['semester'];
+			$marks = ($task1 + $task2 + $task3 + $task4 + $task5 + $task6)/20 + ($mid * 0.35) + ($final * 0.35);
+            
+            $res = $user->update_nilai($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester);
 			if($res){
 				echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Nilai berhasil ditambahkan!</h3>";
 			}else{
@@ -55,6 +60,12 @@ include "php/headertop_guru.php";
                 while($row = $result->fetch_assoc()) {
             ?>
             <table class="tab_one">
+                <tr>
+					<th>Semester:</th>
+					<td><label><input type="radio" name="semester" value="ganjil" checked/> Ganjil</label>
+					<label><input type="radio" name="semester" value="genap"/> Genap</label>
+					</td>
+				</tr>
                 <tr>
                     <td>Tugas 1:</td>
                     <td><input type="number" name="tugas1" value="<?php echo $row['tugas1'];?>"></td>

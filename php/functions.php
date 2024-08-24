@@ -198,6 +198,13 @@ class login_registration_class{
 		$query = $conn->query($sql);
 		return $query;
 	}
+
+	public function get_class_student($stid){
+		global $conn;
+		$query = "select kelas from siswa where nisn='$stid'";
+		$sql = $conn->query($query);
+		return $sql;
+	}
 	//search student
 	//Search Query
 	public function search($query){
@@ -251,7 +258,7 @@ class login_registration_class{
 	//attendance system
 	
 	//grading system
-	public function add_marks($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks){
+	public function add_marks($stid,$name,$class,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester){
 		global $conn;
 		$qry = "select * from rapor where nisn='$stid' and mapel='$subject' ";
 		$query = $conn->query($qry);
@@ -259,7 +266,7 @@ class login_registration_class{
 		if($count>0){
 			return false;
 		}else{
-		$sql = "insert into rapor(nisn,mapel,tugas1,tugas2,tugas3,uts,tugas4,tugas5,tugas6,uas,nilai_akhir) values('$stid','$subject','$task1','$task2','$task3','$mid','$task4','$task5','$task6','$final','$marks')";
+		$sql = "insert into rapor(nisn,nama,kelas,mapel,tugas1,tugas2,tugas3,uts,tugas4,tugas5,tugas6,uas,nilai_akhir,semester) values('$stid','$name','$class','$subject','$task1','$task2','$task3','$mid','$task4','$task5','$task6','$final','$marks','$semester')";
 		$result = $conn->query($sql);
 		return $result;
 		}
@@ -302,9 +309,9 @@ class login_registration_class{
 		}
 	}
 
-	public function update_nilai($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks){
+	public function update_nilai($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester){
 		global $conn;
-		$query = $conn->query("update rapor set mapel='$subject',tugas1='$task1',tugas2='$task2',tugas3='$task3',uts='$mid', tugas4='$task4', tugas5='$task5', tugas6='$task6', uas='$final', nilai_akhir='$marks' where nisn='$stid'");
+		$query = $conn->query("update rapor set mapel='$subject',tugas1='$task1',tugas2='$task2',tugas3='$task3',uts='$mid', tugas4='$task4', tugas5='$task5', tugas6='$task6', uas='$final', nilai_akhir='$marks', semester='$semester' where nisn='$stid'");
 		return true;
 	}
 

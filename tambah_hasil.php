@@ -34,8 +34,10 @@ include "php/headertop_admin.php";
 				$mid = $_POST['uts'];
 				$final = $_POST['uas'];
 				$desc = $_POST['deskripsi'];
+				$semester = $_POST['semester'];
 				$marks = ($task1 + $task2 + $task3 + $task4 + $task5 + $task6)/20 + ($mid * 0.35) + ($final * 0.35);
-				$res = $user->add_marks($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks);
+				$class = $user->get_class_student($stid);
+				$res = $user->add_marks($stid,$name,$class,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester);
 				if($res){
 					echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Nilai berhasil ditambahkan!</h3>";
 				}else{
@@ -53,6 +55,12 @@ include "php/headertop_admin.php";
 		<table class="tab_one" style="text-align:center;">
 			<form action="" method="post">
 				<table>
+					<tr>
+						<th>Semester:</th>
+						<td><label><input type="radio" name="semester" value="Ganjil" checked/> Ganjil</label>
+						<label><input type="radio" name="semester" value="Genap"/> Genap</label>
+						</td>
+					</tr>
 					<tr>
 						<td>Pilih KD: </td>
 						<td>
