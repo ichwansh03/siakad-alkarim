@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors','1');
 session_start();
 	require "php/config.php";
 	require_once "php/functions.php";
@@ -37,7 +38,7 @@ include "php/headertop_admin.php";
 				$semester = $_POST['semester'];
 				$marks = ($task1 + $task2 + $task3 + $task4 + $task5 + $task6)/20 + ($mid * 0.35) + ($final * 0.35);
 				$class = $user->get_class_student($stid);
-				$res = $user->add_marks($stid,$name,$class,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester);
+				$res = $user->add_marks($stid,$name,$class,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester,$desc);
 				if($res){
 					echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Nilai berhasil ditambahkan!</h3>";
 				}else{
@@ -126,7 +127,7 @@ include "php/headertop_admin.php";
 						</p></td>
 					</tr>
 					<tr>
-						<td><input type="submit" name="subject" value="Simpan" /></td>
+						<td><input type="submit" name="submit" value="Simpan" /></td>
 						<td><input type="reset" /></td>
 					</tr>
 				</table>

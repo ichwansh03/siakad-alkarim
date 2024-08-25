@@ -31,7 +31,7 @@ include "header.php";
 						$st_add  = $_POST['alamat'];
 						$st_nidn = $_POST['nidn'];
 						
-						if(empty($id_siswa) or empty($st_name) or empty($st_pass ) or empty($st_email) or empty($BirthMonth) or empty($BirthDay) or empty($BirthYear) or empty($st_contact) or empty($st_gender) or empty($st_add) or empty($st_nidn) or empty($kelas)){
+						if(empty($id_siswa) or empty($st_name) or empty($st_pass ) or empty($st_email) or empty($BirthMonth) or empty($BirthDay) or empty($BirthYear) or empty($st_contact) or empty($st_gender) or empty($st_add) or empty($st_nidn) or empty($st_kelas)){
 							echo "<p style='color:red;text-align:center'>**Kolom tidak boleh kosong**</p>";
 						}else{
 							$st_pass = md5($st_pass);
@@ -49,12 +49,12 @@ include "header.php";
 		<form action="" method="post" id="st_form">
 			<table>
 				<tr>
-					<th>Name: </th>
+					<th>Nama: </th>
 					<td><input type="text" name="nama" placeholder="Nama Lengkap" required /></td>
 				</tr>
 				<tr>
 				<tr>
-					<th>Student ID: </th>
+					<th>NISN: </th>
 					<td><input type="text" name="nisn" placeholder="NISN" required /></td>
 				</tr>
 				<tr>

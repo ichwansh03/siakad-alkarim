@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors','1');
 	session_start();
 	require "php/config.php";
 	require_once "php/functions.php";
@@ -88,7 +89,7 @@ include "php/headertop.php";
 						if(empty($sw_nama) or empty($sw_email)or empty($sw_tgllahir) or empty($sw_kontak) or empty($sw_jk) or empty($sw_alamat) or empty($sw_nipd) or empty($sw_kelas)){
 							echo "<p style='color:red;text-align:center'>Kolom tidak boleh kosong.</p>";
 						}else{
-							$update = $user->updateprofile($sid,$sw_nama,$sw_email,$sw_tgllahir,$sw_jk,$sw_kontak,$sw_alamat,$sw_nipd, $sw_kelas, $fileName);
+							$update = $user->updateprofile($sid,$sw_nama,$sw_email,$sw_tgllahir,$sw_jk,$sw_kontak,$sw_alamat,$sw_nipd,$sw_kelas,$fileName);
 							if($update){
 								echo "<h4 style='color:green;text-align:center'>Informasi berhasil diperbarui</h4>";
 							}else{

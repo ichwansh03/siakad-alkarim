@@ -11,11 +11,18 @@ ini_set('display_errors','1');
         exit();
     }
 
-    if (isset($_REQUEST['vr'])) {
-        $stid = $_REQUEST['vr'];
-        $subject = $_REQUEST['mp'];
-        $semester = $_REQUEST['sm'];
-        $name = $_REQUEST['vn'];
+    if (isset($_REQUEST['id'])) {
+        $id = $_REQUEST['id'];
+        $i=0;
+		$marks = $user->show_marks_by_id($id);
+				
+		while($rows = $marks->fetch_assoc()){
+		    $i++;
+            $stid = $rows['nisn'];
+            $name = $rows['nama'];
+            $subject = $rows['mapel'];
+        }
+
     }
 ?>
 <?php
@@ -40,11 +47,11 @@ include "php/headertop_guru.php";
             $semester = $_POST['semester'];
 			$marks = ($task1 + $task2 + $task3 + $task4 + $task5 + $task6)/20 + ($mid * 0.35) + ($final * 0.35);
             
-            $res = $user->update_nilai($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester);
+            $res = $user->update_nilai($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester,$desc);
 			if($res){
-				echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Nilai berhasil ditambahkan!</h3>";
+				echo "<h3 style='color:green;margin:0;padding:0;text-align:center'>Nilai berhasil diperbarui!</h3>";
 			}else{
-				echo  "<p style='color:red;text-align:center'>Gagal menambahkan data</p>";
+				echo  "<p style='color:red;text-align:center'>Gagal memperbarui data</p>";
 			}
         }
     ?>
@@ -53,13 +60,13 @@ include "php/headertop_guru.php";
     <p style="text-align:center;color:#fff;background:purple;margin:0;padding:8px;"><?php echo "Nama: ".$name."<br>NISN: " . $stid; ?></p>
     </div>
 
-    <div class="st_update fix">
+    <div style="width:20%;margin:50px auto">
         <form action="" method="post" enctype="multipart/form-data">
             <?php
                 $result = $user->show_marks_by_mapel($stid, $subject);
                 while($row = $result->fetch_assoc()) {
             ?>
-            <table class="tab_one">
+            <table class="tab_one" style="text-align:center;">
                 <tr>
 					<th>Semester:</th>
 					<td><label><input type="radio" name="semester" value="ganjil" checked/> Ganjil</label>
@@ -99,8 +106,23 @@ include "php/headertop_guru.php";
                     <td><input type="number" name="uas" value="<?php echo $row['uas'];?>"></td>
                 </tr>
                 <tr>
-					<td style="width:125px;"></td>
-					<input style="background:#3498db;color:#fff;width:168px;border-radius:5px;" type="submit" name="Update" value="Update">
+					<td>Deskripsi: </td>
+					<td><textarea name="deskripsi" rows="4"></textarea></td>
+				</tr>
+                <tr>
+						<td>Nilai Akhir: </td>
+						<td><p style="font-weight: bold;">
+							<?php
+								if($_SERVER['REQUEST_METHOD'] == 'POST') {
+									echo $marks;
+								} else {
+									echo 0.0;
+								}
+							?>
+						</p></td>
+					</tr>
+                <tr>
+                    <td colspan="2"><input style="color:#ddd;background:#3498db" type="submit" name="Update" value="Update" /></td>
 				</tr>
             </table>
             <?php } ?>

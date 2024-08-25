@@ -80,9 +80,9 @@ class login_registration_class{
 	}
 	
 	//Change Student Password
-	public function updatePassword($sid, $newpass, $oldpass){
+	public function updatePassword($sid, $newpass){
 		global $conn;
-		$query = $conn->query("select nisn from siswa where nisn='$sid' and password='$oldpass' ");
+		$query = $conn->query("select nisn from siswa where nisn='$sid'");
 		$count = $query->num_rows;
 		if($count == 0){
 			return print("<p style='color:red;text-align:center'>password lama tidak tersedia</p>");
@@ -163,6 +163,18 @@ class login_registration_class{
 		return true;
 	}
 
+	public function updatePasswordTeacher($tid, $newpass){
+		global $conn;
+		$query = $conn->query("select nisn from guru where nip='$tid'");
+		$count = $query->num_rows;
+		if($count == 0){
+			return print("<p style='color:red;text-align:center'>password lama tidak tersedia</p>");
+		}else{
+			$update = $conn->query("update guru set password='$newpass' where nip='$tid' ");
+			return print("<p style='color:green;text-align:center'>Password berhasil diubah.</p>");
+		}
+	}
+
 	public function teach_logout(){
 		$_SESSION['teach_login'] = false;
 		unset($_SESSION['f_id']);
@@ -203,7 +215,12 @@ class login_registration_class{
 		global $conn;
 		$query = "select kelas from siswa where nisn='$stid'";
 		$sql = $conn->query($query);
-		return $sql;
+		if ($sql->num_rows > 0){
+			$row = $sql->fetch_assoc();
+			return $row['kelas'];
+		} else {
+			return null;
+		}
 	}
 	//search student
 	//Search Query
@@ -258,7 +275,7 @@ class login_registration_class{
 	//attendance system
 	
 	//grading system
-	public function add_marks($stid,$name,$class,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester){
+	public function add_marks($stid,$name,$class,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester,$desc){
 		global $conn;
 		$qry = "select * from rapor where nisn='$stid' and mapel='$subject' ";
 		$query = $conn->query($qry);
@@ -266,15 +283,15 @@ class login_registration_class{
 		if($count>0){
 			return false;
 		}else{
-		$sql = "insert into rapor(nisn,nama,kelas,mapel,tugas1,tugas2,tugas3,uts,tugas4,tugas5,tugas6,uas,nilai_akhir,semester) values('$stid','$name','$class','$subject','$task1','$task2','$task3','$mid','$task4','$task5','$task6','$final','$marks','$semester')";
+		$sql = "insert into rapor(nisn,nama,kelas,mapel,tugas1,tugas2,tugas3,uts,tugas4,tugas5,tugas6,uas,nilai_akhir,semester,deskripsi) values('$stid','$name','$class','$subject','$task1','$task2','$task3','$mid','$task4','$task5','$task6','$final','$marks','$semester','$desc')";
 		$result = $conn->query($sql);
 		return $result;
 		}
 	}
 	//show marks
-	public function show_marks($stid){
+	public function show_marks($id, $semester){
 		global $conn;
-		$result = $conn->query("select * from rapor where nisn='$stid'");
+		$result = $conn->query("select * from rapor where nisn='$id' and semester='$semester'");
 		$count = $result->num_rows;
 		if($count>0){
 			return $result;
@@ -287,6 +304,17 @@ class login_registration_class{
 	public function show_marks_by_mapel($stid, $subject) {
 		global $conn;
 		$result = $conn->query("select * from rapor where nisn='$stid' and mapel='$subject'");
+		$count = $result->num_rows;
+		if($count>0){
+			return $result;
+		}else{
+			return false;
+		}
+	}
+
+	public function show_marks_by_id($id) {
+		global $conn;
+		$result = $conn->query("select * from rapor where id = '$id'");
 		$count = $result->num_rows;
 		if($count>0){
 			return $result;
@@ -309,9 +337,9 @@ class login_registration_class{
 		}
 	}
 
-	public function update_nilai($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester){
+	public function update_nilai($stid,$subject,$task1,$task2,$task3,$task4,$task5,$task6,$mid,$final,$marks,$semester,$desc){
 		global $conn;
-		$query = $conn->query("update rapor set mapel='$subject',tugas1='$task1',tugas2='$task2',tugas3='$task3',uts='$mid', tugas4='$task4', tugas5='$task5', tugas6='$task6', uas='$final', nilai_akhir='$marks', semester='$semester' where nisn='$stid'");
+		$query = $conn->query("update rapor set mapel='$subject',tugas1='$task1',tugas2='$task2',tugas3='$task3',uts='$mid', tugas4='$task4', tugas5='$task5', tugas6='$task6', uas='$final', nilai_akhir='$marks', semester='$semester', deskripsi='$desc' where nisn='$stid'");
 		return true;
 	}
 

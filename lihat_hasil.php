@@ -64,13 +64,11 @@ include "php/headertop_admin.php";
 			$ch = 0;
 			$gp = 0;
 				
-			
-				//$get_result = $user->show_marks();
 				
 				$get_result = $user->show_marks($stid,$semester);
 				if($get_result){
 			?>
-				<p><?php echo "<p style='text-align:center;background:#ddd;color:#01C3AA;padding:5px;width:84%;margin:0 auto'>".$semester." Semester Result"?></p>
+				<p><?php echo "<p style='text-align:center;background:#ddd;color:#01C3AA;padding:5px;width:84%;margin:0 auto'>Semester ".$semester?></p>
 				<table class="tab_two" style="text-align:center;width:85%;margin:0 auto">
 					<th>Mata Pelajaran</th>
 					<th>Nilai Akhir</th>
@@ -81,7 +79,7 @@ include "php/headertop_admin.php";
 		<?php		
 				while($rows = $get_result->fetch_assoc()){
 				$i++;
-				//count total credit hour;	
+				
 				$ch = $ch + credit_hour($rows['mapel']);
 
 		?>
@@ -117,7 +115,7 @@ include "php/headertop_admin.php";
 					}
 				?>
 				</td>
-				<td><a href="update_single_nilai.php?vr=<?php echo $stid?>&mp=<?php echo $rows['mapel'];?>&sm=<?php echo $semester?>&vn=<?php echo $name?>"><button class="editbtn">Edit</button></a></td>
+				<td><a href="update_single_nilai.php?id=<?php echo $rows['id']?>"><button class="editbtn">Edit</button></a></td>
 			</tr>
 			<?php } ?>
 			<tr>
@@ -146,7 +144,7 @@ include "php/headertop_admin.php";
 		<?php 
 			}
 			else{
-				echo  "<p style='color:red;text-align:center'>Nothing Found</p>";
+				echo  "<p style='color:red;text-align:center'>Tidak ditemukan</p>";
 				}
 		?>
 

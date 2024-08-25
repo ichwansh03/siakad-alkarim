@@ -37,8 +37,8 @@
 					<ul>
 						<?php if($user->get_teach_session()){ ?>
 						<li><a href="guru_logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-						<li><a href="guru_ubah_pw.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Ubah Password</a></li>
-						<li><a href="sw_hasil.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Hasil</a></li>
+						<li><a href="guru_ubah_pw.php"><i class="fa fa-gear" aria-hidden="true"></i> Ubah Password</a></li>
+						<li><a href="sw_hasil.php"><i class="fa fa-list" aria-hidden="true"></i> Hasil</a></li>
 						
 						</a></li>
 						

@@ -40,17 +40,10 @@
 					<ul>
 						<?php if($user->getsession()){ ?>
 						<li><a href="sw_logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-						<li><a href="sw_ubah_pw.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Ubah Password</a></li>
-						<li><a href="lihat_single_hasil.php?vr=<?php echo $sid?>&vn=<?php echo $sname?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Result</a></li>
+						<li><a href="sw_ubah_pw.php"><i class="fa fa-gear" aria-hidden="true"></i> Ubah Password</a></li>
+						<li><a href="lihat_single_hasil.php?vr=<?php echo $sid?>&vn=<?php echo $sname?>"><i class="fa fa-list" aria-hidden="true"></i> Rapor</a></li>
 						<li><a href="sw_profile.php"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $sid; ?></a></li>
 						<?php } ?>
-						<?php if($user->get_teach_session()){ ?>
-								<li><a href="guru_logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-								<li><a href="kelas_pres_guru.php"><i class="fa fa-cog" aria-hidden="true"></i> Options</a></li>
-								<li><a href="guru_profile.php"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $fname;
-								?></a></li>
-								
-							<?php } ?>
 					</ul>
 
 				</div>
